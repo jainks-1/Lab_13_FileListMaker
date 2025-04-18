@@ -1,6 +1,5 @@
 // Kaden Jain
-
-// to move function -  store the variable, then remove it frm array, then move to users desired position
+// Lab 13
 
 import java.util.Scanner;
 import java.io.*;
@@ -19,6 +18,7 @@ public class FileListMaker {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
 
+        // get file
         try {
             OpenFile();
 
@@ -41,7 +41,7 @@ public class FileListMaker {
             displayMenu();
 
             menuChoice = SafeInput.getRegExString(in, "\nEnter your Choice [AaDdIiMmOoSsCcVvQq]", "^[AaDdIiMmOoSsCcVvQq]$").toUpperCase();
-
+            // case statements
             switch (menuChoice) {
                 case "A":
                     addItem();
@@ -82,6 +82,7 @@ public class FileListMaker {
         } while (!cont);
     }
 
+    // open file - pulled from class
     private static void OpenFile() throws IOException {
         JFileChooser chooser = new JFileChooser();
         File selectedFile;
@@ -118,6 +119,7 @@ public class FileListMaker {
         }
     }
 
+    // save file - pulled from class
     private static void saveFile() throws IOException {
         if (currentFile == null) {
             JFileChooser chooser = new JFileChooser();
@@ -149,6 +151,7 @@ public class FileListMaker {
         System.out.println("Data file written!");
     }
 
+    //display the menu
     private static void displayMenu() {
         System.out.println("\nMenu:");
         System.out.println("A - Add an item to the list");
@@ -162,6 +165,7 @@ public class FileListMaker {
         System.out.println("Q - Quit the program");
     }
 
+    // adding itmes
     private static void addItem() {
         Scanner in = new Scanner(System.in);
         String userInput = SafeInput.getNonZeroLenString(in, "Enter item to add");
@@ -170,6 +174,7 @@ public class FileListMaker {
         System.out.println("Added item: " + userInput + "\n\n");
     }
 
+    // delete items
     private static void deleteItem() {
         Scanner in = new Scanner(System.in);
 
@@ -184,6 +189,7 @@ public class FileListMaker {
         needsToBeSaved = true;
     }
 
+    // insert items
     private static void insertItem() {
         Scanner in = new Scanner(System.in);
         printList();
@@ -194,6 +200,7 @@ public class FileListMaker {
         System.out.println("Inserted item: " + userInput + " at position " + (index + 1) + "\n\n");
     }
 
+    // move items
     private static void moveItem() {
         Scanner in = new Scanner(System.in);
 
@@ -213,6 +220,7 @@ public class FileListMaker {
         System.out.println("Moved item to position " + (toIndex + 1) + ": " + item + "\n\n");
     }
 
+    // clear the list
     private static void clearList() {
         Scanner in = new Scanner(System.in);
 
@@ -224,6 +232,7 @@ public class FileListMaker {
         }
     }
 
+    // print the list
     private static void printList() {
         System.out.println("\nNumbered List:");
         for (int i = 0; i < mainArray.size(); i++) {
